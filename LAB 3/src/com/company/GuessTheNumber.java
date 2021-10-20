@@ -106,3 +106,65 @@ public class GuessTheNumber {
 
     }
 }
+
+class Complex{
+    private int real;
+    private int imag;
+
+    Complex(int n, int m){
+        this.real = n;
+        this.imag = m;
+    }
+
+    public void setReal(int n){
+        this.real = n;
+    }
+
+    public void setImag(int n){
+        this.imag = n;
+    }
+
+    public int getReal(){
+        return this.real;
+    }
+
+    public int getImag(){
+        return this.imag;
+    }
+
+    public String toString(){
+        String sign;
+        if(this.imag < 0){
+            sign = " - ";
+        }
+        else{
+            sign = " + ";
+        }
+        System.out.println(this.real + sign + this.imag +" i");
+        return null;
+    }
+
+    public Complex add(Complex num){
+        int r1 = this.real;
+        int im1 = this.imag;
+        int r2 = num.real;
+        int im2 = num.imag;
+        return new Complex(r1+r2, im1+im2);
+    }
+
+    public Complex subtract(Complex num){
+        int r1 = this.real;
+        int im1 = this.imag;
+        int r2 = num.real;
+        int im2 = num.imag;
+        return new Complex(r1-r2, im1-im2);
+    }
+    public Complex multiply(Complex num){
+        int r1 = this.real;
+        int im1 = this.imag;
+        int r2 = num.real;
+        int im2 = num.imag;
+        return new Complex((r1*r2)+(im1*im2), (r1*im2)+(r2*im1));
+    }
+
+}
