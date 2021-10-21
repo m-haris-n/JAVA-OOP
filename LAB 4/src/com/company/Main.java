@@ -110,9 +110,16 @@ class JTime {
 
     JTime(int scnd){
         this();
+        if(sec <60){
+            sec = scnd;
+        }else if(sec<3600){
+            min = scnd/60;
+            sec = scnd % 60;
+        }else{
             min = (scnd/60) % 60;
             hr = sec/3600;
             sec = scnd % 60;
+        }
     }
 
     public static void main(String[] args) {
@@ -148,10 +155,7 @@ class JTime {
         int sec1 = (t1.hr*3600) + (t1.min*60) + (t1.sec);
         int sec2 = (t2.hr*3600) + (t2.min*60) + (t2.sec);
         int scnd = Math.abs(sec1-sec2);
-        int min = (scnd/60) % 60;
-        int hr = sec/360;
-        int sec = scnd % 60;
-        return new JTime(hr, min, sec);
+        return new JTime(scnd);
     }
 
 }
