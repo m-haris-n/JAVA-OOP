@@ -111,7 +111,7 @@ class JTime {
     JTime(int scnd){
         this();
             min = (scnd/60) % 60;
-            hr = sec/360;
+            hr = sec/3600;
             sec = scnd % 60;
     }
 
@@ -139,14 +139,14 @@ class JTime {
     }
 
     public int timeInSec(JTime t1, JTime t2){
-        int sec1 = (t1.hr*360) + (t1.min*60) + (t1.sec);
-        int sec2 = (t2.hr*360) + (t2.min*60) + (t2.sec);
+        int sec1 = (t1.hr*3600) + (t1.min*60) + (t1.sec);
+        int sec2 = (t2.hr*3600) + (t2.min*60) + (t2.sec);
         return Math.abs(sec1-sec2);
     }
 
     public JTime timeInStamp(JTime t1, JTime t2){
-        int sec1 = (t1.hr*360) + (t1.min*60) + (t1.sec);
-        int sec2 = (t2.hr*360) + (t2.min*60) + (t2.sec);
+        int sec1 = (t1.hr*3600) + (t1.min*60) + (t1.sec);
+        int sec2 = (t2.hr*3600) + (t2.min*60) + (t2.sec);
         int scnd = Math.abs(sec1-sec2);
         int min = (scnd/60) % 60;
         int hr = sec/360;
