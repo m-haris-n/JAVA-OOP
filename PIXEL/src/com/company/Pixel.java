@@ -50,12 +50,7 @@ public class Pixel {
         this.c.setB(grey);
     }
 
-    public void convertWeightedGrey(){
-        int grey = (int)(0.3*this.c.getR())+ (int)(0.59*this.c.getG())+ (int)(0.11*this.c.getB());
-        this.c.setR(grey);
-        this.c.setG(grey);
-        this.c.setB(grey);
-    }
+    
 
     public static void main(String[] args) {
         Color c1 = new Color("1f4affaf");
