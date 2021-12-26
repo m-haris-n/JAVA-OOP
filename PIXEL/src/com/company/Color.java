@@ -80,7 +80,44 @@ public class Color{
         }
     }
 
-    
+    public Color(String hex) {
+        if (this.isStringValid(hex)){
+            String[] splitHex = this.splitString(hex);
+            this.r = Integer.parseInt(splitHex[0], 16);
+            this.g = Integer.parseInt(splitHex[1], 16);
+            this.b = Integer.parseInt(splitHex[2], 16);
+            this.alpha = 255;
+            if(splitHex.length == 4){
+                this.alpha = Integer.parseInt(splitHex[3], 16);
+            }
+        }
+        else{
+            System.out.println("Error! Invalid Input");
+        }
+    }
+
+    public String[] splitString(String hex){
+        int ind = 0;
+        String[] hexArr = new String[4];
+        for(int i = 0; i < hex.length(); i+=2){
+            hexArr[ind] = hex.substring(i, i+2);
+            ind++;
+        }
+        return hexArr;
+    }
+
+    public boolean isStringValid(String hex){
+        if(hex.length() == 8 || hex.length() == 6){
+            String[] hexArr = this.splitString(hex);
+            for(String s: hexArr){
+                if(Integer.parseInt(s,16) > 255){
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
 
     public String getColorHEX(){
         return String.format("%02x", r) + String.format("%02x", g) + String.format("%02x", b) +String.format("%2x", alpha);
