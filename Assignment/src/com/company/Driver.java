@@ -6,9 +6,15 @@ public abstract class Driver{
     String name;
     int age;
     String country;
-    CarCons team;
+    transient CarCons team;
     String gender;
-
+    String teamName;
+    int score = 0;
+    int numOfRaces = 0;
+    int[] pos = new int[10];
+    int startPos = 0;
+    int winProb = 0;
+    int currentPos = 0;
     public Driver(String name, int age, String country, String gender) {
         this.name = name.toUpperCase(Locale.ROOT);
         this.country = country.toUpperCase(Locale.ROOT);
