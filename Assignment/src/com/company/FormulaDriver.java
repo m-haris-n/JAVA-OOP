@@ -1,9 +1,9 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
-public class FormulaDriver extends Driver{
-
+public class FormulaDriver extends Driver {
 
 
     public FormulaDriver(String name, int age, String country, String gender, CarCons team) {
@@ -72,25 +72,43 @@ public class FormulaDriver extends Driver{
         this.winProb = winProb;
     }
 
-    void incScore(int pts){
+    void incScore(int pts) {
         this.score += pts;
     }
 
-    public int getCurrentPos() { return currentPos; }
+    public int getCurrentPos() {
+        return currentPos;
+    }
 
-    public void setCurrentPos(int currentPos) { this.currentPos = currentPos; }
+    public void setCurrentPos(int currentPos) {
+        this.currentPos = currentPos;
+    }
 
-    void incPos(int pos){
-        for(int i = 0; i < 10; i++){
-            if((pos-1) == i){
+    void incPos(int pos) {
+        for (int i = 0; i < 10; i++) {
+            if ((pos - 1) == i) {
                 this.pos[i]++;
                 break;
             }
         }
     }
 
-    void raced(){
+    void raced() {
         this.numOfRaces++;
+    }
+
+    public ArrayList<String> getDriverData(){
+        ArrayList<String> drivStats = new ArrayList<>();
+        drivStats.add(this.name.toString());
+        drivStats.add(String.valueOf(this.age));
+        drivStats.add(this.country);
+        drivStats.add(this.teamName);
+        drivStats.add(String.valueOf(this.score));
+        drivStats.add(String.valueOf(this.pos[0]));
+        drivStats.add(String.valueOf(this.numOfRaces));
+        drivStats.add(String.valueOf(this.startPos));
+        drivStats.add(String.valueOf(this.currentPos));
+        return drivStats;
     }
 
     @Override
@@ -100,9 +118,11 @@ public class FormulaDriver extends Driver{
                 "Country: " + country + '\n' +
                 "Team: " + team.name + '\n' +
                 "Gender: " + gender + '\n' +
+                "Starting in Last Race: " + startPos + '\n' +
+                "Position in Last Race: " + currentPos + '\n' +
                 "Score: " + score + '\n' +
                 "Number of Races: " + numOfRaces + '\n' +
-                "Position: " + Arrays.toString(pos);
+                "All Positions: " + Arrays.toString(pos);
     }
 
 }

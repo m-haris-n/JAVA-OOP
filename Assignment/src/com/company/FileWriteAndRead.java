@@ -15,11 +15,10 @@ public class FileWriteAndRead {
         BufferedWriter buffWriter = new BufferedWriter(writer);
         Gson gson = new Gson();
         String object = gson.toJson(driver);
-        System.out.println(object);
         try {
             buffWriter.write(object);
             buffWriter.close();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -32,8 +31,8 @@ public class FileWriteAndRead {
         FileReader reader = new FileReader(file);
         Gson jsonData = new Gson();
         JsonArray data = jsonData.fromJson(reader, JsonArray.class);
-        if(data!=null){
-            for(JsonElement obj: data){
+        if (data != null) {
+            for (JsonElement obj : data) {
                 String name = obj.getAsJsonObject().get("name").getAsString();
                 int age = obj.getAsJsonObject().get("age").getAsInt();
                 String cntry = obj.getAsJsonObject().get("country").getAsString();
@@ -56,9 +55,9 @@ public class FileWriteAndRead {
         return list;
     }
 
-    public static int[] jsonArrToIntArr(JsonArray jArr){
+    public static int[] jsonArrToIntArr(JsonArray jArr) {
         int[] intArr = new int[jArr.size()];
-        for(int i = 0; i < intArr.length; i++){
+        for (int i = 0; i < intArr.length; i++) {
             intArr[i] = jArr.get(i).getAsInt();
         }
         return intArr;
